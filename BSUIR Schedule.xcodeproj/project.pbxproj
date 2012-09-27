@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FE098FB5161442CD00A98F7B /* SelectGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE098FB4161442CD00A98F7B /* SelectGroupViewController.m */; };
+		FE098FBA1614497700A98F7B /* BSWeek.m in Sources */ = {isa = PBXBuildFile; fileRef = FE098FB91614497700A98F7B /* BSWeek.m */; };
+		FE098FBE1614498F00A98F7B /* BSWeekDay.m in Sources */ = {isa = PBXBuildFile; fileRef = FE098FBD1614498F00A98F7B /* BSWeekDay.m */; };
+		FE098FC1161449BD00A98F7B /* BSSubject.m in Sources */ = {isa = PBXBuildFile; fileRef = FE098FC0161449BD00A98F7B /* BSSubject.m */; };
+		FE098FC416144F8700A98F7B /* BSModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FE098FC316144F8700A98F7B /* BSModel.m */; };
 		FEA1D4F81610576000B80721 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEA1D4F71610576000B80721 /* UIKit.framework */; };
 		FEA1D4FA1610576000B80721 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEA1D4F91610576000B80721 /* Foundation.framework */; };
 		FEA1D4FC1610576000B80721 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEA1D4FB1610576000B80721 /* CoreGraphics.framework */; };
@@ -18,10 +23,25 @@
 		FEA1D50E1610576000B80721 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FEA1D50D1610576000B80721 /* Default-568h@2x.png */; };
 		FEA1D5111610576000B80721 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEA1D50F1610576000B80721 /* MainStoryboard_iPhone.storyboard */; };
 		FEA1D5141610576000B80721 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEA1D5121610576000B80721 /* MainStoryboard_iPad.storyboard */; };
-		FEA1D5171610576000B80721 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA1D5161610576000B80721 /* ViewController.m */; };
+		FED157BA161319C800D3E5ED /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FED157B9161319C800D3E5ED /* EventKit.framework */; };
+		FED157BC161319F800D3E5ED /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FED157BB161319F800D3E5ED /* libxml2.dylib */; };
+		FED157C416131A0E00D3E5ED /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = FED157BF16131A0E00D3E5ED /* TFHpple.m */; };
+		FED157C516131A0E00D3E5ED /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = FED157C116131A0E00D3E5ED /* TFHppleElement.m */; };
+		FED157C616131A0E00D3E5ED /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = FED157C316131A0E00D3E5ED /* XPathQuery.m */; };
+		FED157C916131A4400D3E5ED /* NSDate-Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = FED157C816131A4400D3E5ED /* NSDate-Utilities.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FE098FB3161442CD00A98F7B /* SelectGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectGroupViewController.h; path = SelectGroup/SelectGroupViewController.h; sourceTree = "<group>"; };
+		FE098FB4161442CD00A98F7B /* SelectGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectGroupViewController.m; path = SelectGroup/SelectGroupViewController.m; sourceTree = "<group>"; };
+		FE098FB81614497700A98F7B /* BSWeek.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BSWeek.h; path = Entities/BSWeek.h; sourceTree = "<group>"; };
+		FE098FB91614497700A98F7B /* BSWeek.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BSWeek.m; path = Entities/BSWeek.m; sourceTree = "<group>"; };
+		FE098FBC1614498F00A98F7B /* BSWeekDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BSWeekDay.h; path = Entities/BSWeekDay.h; sourceTree = "<group>"; };
+		FE098FBD1614498F00A98F7B /* BSWeekDay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BSWeekDay.m; path = Entities/BSWeekDay.m; sourceTree = "<group>"; };
+		FE098FBF161449BD00A98F7B /* BSSubject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BSSubject.h; path = Entities/BSSubject.h; sourceTree = "<group>"; };
+		FE098FC0161449BD00A98F7B /* BSSubject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BSSubject.m; path = Entities/BSSubject.m; sourceTree = "<group>"; };
+		FE098FC216144F8700A98F7B /* BSModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BSModel.h; path = Entities/BSModel.h; sourceTree = "<group>"; };
+		FE098FC316144F8700A98F7B /* BSModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BSModel.m; path = Entities/BSModel.m; sourceTree = "<group>"; };
 		FEA1D4F31610576000B80721 /* BSUIR Schedule.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BSUIR Schedule.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEA1D4F71610576000B80721 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FEA1D4F91610576000B80721 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -37,8 +57,16 @@
 		FEA1D50D1610576000B80721 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		FEA1D5101610576000B80721 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		FEA1D5131610576000B80721 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		FEA1D5151610576000B80721 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		FEA1D5161610576000B80721 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		FED157B9161319C800D3E5ED /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		FED157BB161319F800D3E5ED /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		FED157BE16131A0E00D3E5ED /* TFHpple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHpple.h; sourceTree = "<group>"; };
+		FED157BF16131A0E00D3E5ED /* TFHpple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHpple.m; sourceTree = "<group>"; };
+		FED157C016131A0E00D3E5ED /* TFHppleElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHppleElement.h; sourceTree = "<group>"; };
+		FED157C116131A0E00D3E5ED /* TFHppleElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHppleElement.m; sourceTree = "<group>"; };
+		FED157C216131A0E00D3E5ED /* XPathQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPathQuery.h; sourceTree = "<group>"; };
+		FED157C316131A0E00D3E5ED /* XPathQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPathQuery.m; sourceTree = "<group>"; };
+		FED157C716131A4400D3E5ED /* NSDate-Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate-Utilities.h"; sourceTree = "<group>"; };
+		FED157C816131A4400D3E5ED /* NSDate-Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate-Utilities.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +74,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FED157BC161319F800D3E5ED /* libxml2.dylib in Frameworks */,
+				FED157BA161319C800D3E5ED /* EventKit.framework in Frameworks */,
 				FEA1D4F81610576000B80721 /* UIKit.framework in Frameworks */,
 				FEA1D4FA1610576000B80721 /* Foundation.framework in Frameworks */,
 				FEA1D4FC1610576000B80721 /* CoreGraphics.framework in Frameworks */,
@@ -55,9 +85,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FE098FB7161442D100A98F7B /* Select Group */ = {
+			isa = PBXGroup;
+			children = (
+				FE098FB3161442CD00A98F7B /* SelectGroupViewController.h */,
+				FE098FB4161442CD00A98F7B /* SelectGroupViewController.m */,
+			);
+			name = "Select Group";
+			sourceTree = "<group>";
+		};
+		FE098FBB1614498000A98F7B /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				FE098FB81614497700A98F7B /* BSWeek.h */,
+				FE098FB91614497700A98F7B /* BSWeek.m */,
+				FE098FBC1614498F00A98F7B /* BSWeekDay.h */,
+				FE098FBD1614498F00A98F7B /* BSWeekDay.m */,
+				FE098FBF161449BD00A98F7B /* BSSubject.h */,
+				FE098FC0161449BD00A98F7B /* BSSubject.m */,
+				FE098FC216144F8700A98F7B /* BSModel.h */,
+				FE098FC316144F8700A98F7B /* BSModel.m */,
+			);
+			name = Entities;
+			sourceTree = "<group>";
+		};
 		FEA1D4E81610576000B80721 = {
 			isa = PBXGroup;
 			children = (
+				FEA1D51D16105D8600B80721 /* Submodules */,
 				FEA1D4FD1610576000B80721 /* BSUIR Schedule */,
 				FEA1D4F61610576000B80721 /* Frameworks */,
 				FEA1D4F41610576000B80721 /* Products */,
@@ -75,6 +130,8 @@
 		FEA1D4F61610576000B80721 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FED157BB161319F800D3E5ED /* libxml2.dylib */,
+				FED157B9161319C800D3E5ED /* EventKit.framework */,
 				FEA1D4F71610576000B80721 /* UIKit.framework */,
 				FEA1D4F91610576000B80721 /* Foundation.framework */,
 				FEA1D4FB1610576000B80721 /* CoreGraphics.framework */,
@@ -85,12 +142,15 @@
 		FEA1D4FD1610576000B80721 /* BSUIR Schedule */ = {
 			isa = PBXGroup;
 			children = (
+				FED157BD16131A0400D3E5ED /* XPath */,
+				FE098FBB1614498000A98F7B /* Entities */,
+				FED157C716131A4400D3E5ED /* NSDate-Utilities.h */,
+				FED157C816131A4400D3E5ED /* NSDate-Utilities.m */,
 				FEA1D5061610576000B80721 /* AppDelegate.h */,
 				FEA1D5071610576000B80721 /* AppDelegate.m */,
 				FEA1D50F1610576000B80721 /* MainStoryboard_iPhone.storyboard */,
+				FE098FB7161442D100A98F7B /* Select Group */,
 				FEA1D5121610576000B80721 /* MainStoryboard_iPad.storyboard */,
-				FEA1D5151610576000B80721 /* ViewController.h */,
-				FEA1D5161610576000B80721 /* ViewController.m */,
 				FEA1D4FE1610576000B80721 /* Supporting Files */,
 			);
 			path = "BSUIR Schedule";
@@ -108,6 +168,26 @@
 				FEA1D50D1610576000B80721 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FEA1D51D16105D8600B80721 /* Submodules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Submodules;
+			sourceTree = "<group>";
+		};
+		FED157BD16131A0400D3E5ED /* XPath */ = {
+			isa = PBXGroup;
+			children = (
+				FED157BE16131A0E00D3E5ED /* TFHpple.h */,
+				FED157BF16131A0E00D3E5ED /* TFHpple.m */,
+				FED157C016131A0E00D3E5ED /* TFHppleElement.h */,
+				FED157C116131A0E00D3E5ED /* TFHppleElement.m */,
+				FED157C216131A0E00D3E5ED /* XPathQuery.h */,
+				FED157C316131A0E00D3E5ED /* XPathQuery.m */,
+			);
+			name = XPath;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,7 +259,15 @@
 			files = (
 				FEA1D5041610576000B80721 /* main.m in Sources */,
 				FEA1D5081610576000B80721 /* AppDelegate.m in Sources */,
-				FEA1D5171610576000B80721 /* ViewController.m in Sources */,
+				FED157C416131A0E00D3E5ED /* TFHpple.m in Sources */,
+				FED157C516131A0E00D3E5ED /* TFHppleElement.m in Sources */,
+				FED157C616131A0E00D3E5ED /* XPathQuery.m in Sources */,
+				FED157C916131A4400D3E5ED /* NSDate-Utilities.m in Sources */,
+				FE098FB5161442CD00A98F7B /* SelectGroupViewController.m in Sources */,
+				FE098FBA1614497700A98F7B /* BSWeek.m in Sources */,
+				FE098FBE1614498F00A98F7B /* BSWeekDay.m in Sources */,
+				FE098FC1161449BD00A98F7B /* BSSubject.m in Sources */,
+				FE098FC416144F8700A98F7B /* BSModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,7 +357,9 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BSUIR Schedule/BSUIR Schedule-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2/**";
 				INFOPLIST_FILE = "BSUIR Schedule/BSUIR Schedule-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -280,7 +370,9 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BSUIR Schedule/BSUIR Schedule-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2/**";
 				INFOPLIST_FILE = "BSUIR Schedule/BSUIR Schedule-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -305,6 +397,7 @@
 				FEA1D51C1610576000B80721 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
