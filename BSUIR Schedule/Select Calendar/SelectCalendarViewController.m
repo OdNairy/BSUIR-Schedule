@@ -11,6 +11,7 @@
 
 @interface SelectCalendarViewController ()
 @property (nonatomic, strong) EKEventStore* store;
+@property (nonatomic, strong) NSMutableDictionary* groupedCalendars;
 @end
 
 @implementation SelectCalendarViewController
@@ -28,6 +29,17 @@
 {
     [super viewDidLoad];
     _store = [[EKEventStore alloc] init];
+    _groupedCalendars = [[NSMutableDictionary alloc] init];
+    
+    for (EKCalendar* calendar in _store.calendars) {
+        if (calendar.type == EKCalendarTypeBirthday)
+            continue;
+        NSMutableArray* arr = _groupedCalendars[calendar.source.title];
+        if (!arr) {
+            _groupedCalendars[calendar.source.title] = [NSMutableArray new];
+        }
+        [arr addObject:calendar];
+    }
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -46,15 +58,16 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return self.groupedCalendars.allKeys.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
     
-    
-    return _store.calendars.count;
+    NSString* key = self.groupedCalendars.allKeys[section];
+    NSArray* calendars = self.groupedCalendars[key];
+    return calendars.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -65,12 +78,22 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:(UITableViewCellStyleSubtitle) reuseIdentifier:CellIdentifier];
     }
-    EKCalendar* calendar = self.store.calendars[indexPath.row];
+    
+    NSString* key = self.groupedCalendars.allKeys[indexPath.section];
+    NSArray* calendars = self.groupedCalendars[key];
+    EKCalendar* calendar = calendars[indexPath.row];
+    
     cell.textLabel.text = calendar.title;
     cell.detailTextLabel.text = calendar.source.title;
+    cell.textLabel.textColor = [UIColor colorWithCGColor:calendar.CGColor];
     // Configure the cell...
     
     return cell;
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    NSString* key = self.groupedCalendars.allKeys[section];
+    return key;
 }
 
 /*
