@@ -12,6 +12,7 @@
 		FE098FBE1614498F00A98F7B /* BSWeekDay.m in Sources */ = {isa = PBXBuildFile; fileRef = FE098FBD1614498F00A98F7B /* BSWeekDay.m */; };
 		FE098FC1161449BD00A98F7B /* BSSubject.m in Sources */ = {isa = PBXBuildFile; fileRef = FE098FC0161449BD00A98F7B /* BSSubject.m */; };
 		FE098FC416144F8700A98F7B /* BSModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FE098FC316144F8700A98F7B /* BSModel.m */; };
+		FE161CA81614FCFD00D9D440 /* SelectCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE161CA71614FCFD00D9D440 /* SelectCalendarViewController.m */; };
 		FEA1D4F81610576000B80721 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEA1D4F71610576000B80721 /* UIKit.framework */; };
 		FEA1D4FA1610576000B80721 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEA1D4F91610576000B80721 /* Foundation.framework */; };
 		FEA1D4FC1610576000B80721 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEA1D4FB1610576000B80721 /* CoreGraphics.framework */; };
@@ -42,6 +43,8 @@
 		FE098FC0161449BD00A98F7B /* BSSubject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BSSubject.m; path = Entities/BSSubject.m; sourceTree = "<group>"; };
 		FE098FC216144F8700A98F7B /* BSModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BSModel.h; path = Entities/BSModel.h; sourceTree = "<group>"; };
 		FE098FC316144F8700A98F7B /* BSModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BSModel.m; path = Entities/BSModel.m; sourceTree = "<group>"; };
+		FE161CA61614FCFD00D9D440 /* SelectCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectCalendarViewController.h; path = "Select Calendar/SelectCalendarViewController.h"; sourceTree = "<group>"; };
+		FE161CA71614FCFD00D9D440 /* SelectCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectCalendarViewController.m; path = "Select Calendar/SelectCalendarViewController.m"; sourceTree = "<group>"; };
 		FEA1D4F31610576000B80721 /* BSUIR Schedule.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BSUIR Schedule.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEA1D4F71610576000B80721 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FEA1D4F91610576000B80721 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -109,6 +112,15 @@
 			name = Entities;
 			sourceTree = "<group>";
 		};
+		FE161CAA1614FE2A00D9D440 /* SelectCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				FE161CA61614FCFD00D9D440 /* SelectCalendarViewController.h */,
+				FE161CA71614FCFD00D9D440 /* SelectCalendarViewController.m */,
+			);
+			name = SelectCalendar;
+			sourceTree = "<group>";
+		};
 		FEA1D4E81610576000B80721 = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +161,7 @@
 				FEA1D5061610576000B80721 /* AppDelegate.h */,
 				FEA1D5071610576000B80721 /* AppDelegate.m */,
 				FEA1D50F1610576000B80721 /* MainStoryboard_iPhone.storyboard */,
+				FE161CAA1614FE2A00D9D440 /* SelectCalendar */,
 				FE098FB7161442D100A98F7B /* Select Group */,
 				FEA1D5121610576000B80721 /* MainStoryboard_iPad.storyboard */,
 				FEA1D4FE1610576000B80721 /* Supporting Files */,
@@ -268,6 +281,7 @@
 				FE098FBE1614498F00A98F7B /* BSWeekDay.m in Sources */,
 				FE098FC1161449BD00A98F7B /* BSSubject.m in Sources */,
 				FE098FC416144F8700A98F7B /* BSModel.m in Sources */,
+				FE161CA81614FCFD00D9D440 /* SelectCalendarViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

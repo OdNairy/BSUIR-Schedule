@@ -10,6 +10,9 @@
 @class BSSubject;
 @interface BSWeekDay : NSObject
 
+// EKSunday, EKMonday, etc...
+@property (nonatomic, assign) NSUInteger day;
+
 -(id)initWithWeekDay:(NSInteger)weekDay;
 
 -(void)addLesson:(BSSubject*)lesson;

@@ -9,7 +9,10 @@
 #import <Foundation/Foundation.h>
 
 #import "BSWeekDay.h"
+@class BSWeekDay;
 
 @interface BSWeek : NSObject
+
+-(void)addWeekDay:(BSWeekDay*)weekDay;
 
 @end

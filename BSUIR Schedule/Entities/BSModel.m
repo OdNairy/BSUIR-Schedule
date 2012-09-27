@@ -33,12 +33,15 @@
     
     NSMutableArray* subjects = [NSMutableArray array];
     
+    BSWeek* workWeek = [[BSWeek alloc] init];
+    
     NSInteger trCount = [[parser searchWithXPathQuery:@"//table/tr"] count];
     for (tr = 2; tr != trCount + 1; tr++) {
         NSInteger divCount = [[parser searchWithXPathQuery:[NSString stringWithFormat:@"//table/tr[%d]/td[2]/div", tr]] count];
         
-        BSWeekDay* workDay = [[BSWeekDay alloc] init];
-        
+        BSWeekDay* workDay = [[BSWeekDay alloc] initWithWeekDay:tr];
+        [workWeek addWeekDay:workDay];
+        workDay.day = tr;
         for (div = 1; div != divCount + 1; div++) {
             day = tr - 2;
             
@@ -95,7 +98,7 @@
             lesson.room = room;
             lesson.lecturer = [lecturer stringByReplacingPercentEscapesUsingEncoding:NSWindowsCP1251StringEncoding];
             NSLog(@"%@",lesson);
-            [subjects addObject:lesson];
+            [workDay addLesson:lesson];
             
             //            NSString *updateSQL = [NSString stringWithFormat:@"insert into schedule (day, week, time, subgroup, subject, type, room, lecturer) values (%d, '%@', '%@', %d, '%@', '%@', '%@', '%@')", day, week, time, subgroup, subject, type, room, lecturer];
             //
@@ -107,7 +110,7 @@
         
     }
     
-    
+    return workWeek;
 }
 
 -(NSString *)removeAllButDigit:(NSString *)originalString{

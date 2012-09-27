@@ -8,6 +8,7 @@
 
 #import "SelectGroupViewController.h"
 #import "BSWeek.h"
+#import "BSModel.h"
 
 #define MAX_DIGITAL_COUNT 7
 
@@ -33,6 +34,7 @@
 
 -(void)hideKeyboard:(id)sender{
     [self.view endEditing:YES];
+ 
 }
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
@@ -43,16 +45,30 @@
 
 -(void)downloadAndParseScheduleWithFinishBlock:(BSWeekBlock)block{
     NSString* stringUrl = [@"http://www.bsuir.by/psched/schedulegroup?group=" stringByAppendingString:self.groupTextField.text];
-    NSURLRequest* requet = [NSURLRequest requestWithURL:[NSURL URLWithString:stringUrl]];
+    NSURLRequest* request = [NSURLRequest requestWithURL:[NSURL URLWithString:stringUrl]];
     
-    [NSURLConnection sendAsynchronousRequest:requet
+    [NSURLConnection sendAsynchronousRequest:request
                                        queue:[NSOperationQueue currentQueue]
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-        
+                               dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{                                   
+                                   if (data.length) {
+                                       BSWeek* week = [[BSModel sharedInstance] computeWorkWeekFromData:data];
+                                       block(week);
+                                   }
+                               });
+//                               if (!error) {
+//                                   [self respondsToSelector:@selector(statusCode)]
+//                               }
     }];
+//    NSData* data = [NSData dataWithContentsOfURL:[request URL]];
+//    [[BSModel sharedInstance] computeWorkWeekFromData:data];
 }
 
 - (IBAction)requestSchedule:(id)sender {
+    
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     [self downloadAndParseScheduleWithFinishBlock:^(BSWeek *workWeek) {
         NSLog(@"%@",workWeek);
     }];
