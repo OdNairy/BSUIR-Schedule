@@ -48,7 +48,7 @@
                                 </state>
                                 <connections>
                                     <action selector="requestSchedule:" destination="2" eventType="touchUpInside" id="4Bb-wG-qTg"/>
-                                    <segue destination="4D8-gs-57C" kind="push" id="8ki-Hj-GNT"/>
+                                    <segue destination="4D8-gs-57C" kind="modal" id="8ki-Hj-GNT"/>
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" id="A4H-oy-gb6">
@@ -87,8 +87,8 @@
         <scene sceneID="FA6-cS-1hP">
             <objects>
                 <tableViewController id="4D8-gs-57C" customClass="SelectCalendarViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="50" sectionHeaderHeight="10" sectionFooterHeight="10" id="qrC-e4-C3T">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" rowHeight="50" sectionHeaderHeight="10" sectionFooterHeight="10" id="qrC-e4-C3T">
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <connections>

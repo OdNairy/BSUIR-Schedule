@@ -15,4 +15,9 @@
 
 -(void)addWeekDay:(BSWeekDay*)weekDay;
 
+// EKSunday, EKMonday, ...
+-(BSWeekDay*)dayByWeekDay:(NSUInteger)day;
+
+-(NSArray*)firstWeekEvents;
+
 @end

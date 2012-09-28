@@ -10,7 +10,7 @@
 
 @class BSWeek;
 
-typedef void (^BSWeekBlock)(BSWeek* workWeek);
+
 
 @interface SelectGroupViewController : UIViewController<UITextFieldDelegate>
 
@@ -19,5 +19,5 @@ typedef void (^BSWeekBlock)(BSWeek* workWeek);
 -(IBAction)hideKeyboard:(id)sender;
 -(IBAction)requestSchedule:(id)sender;
 
-- (void)downloadAndParseScheduleWithFinishBlock:(BSWeekBlock)block;
+
 @end

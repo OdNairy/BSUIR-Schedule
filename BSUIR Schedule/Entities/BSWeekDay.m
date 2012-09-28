@@ -9,6 +9,7 @@
 #import "BSWeekDay.h"
 //@compatibility_alias <#alias#> <#class#>
 #import "BSSubject.h"
+
 @interface BSWeekDay ()
 @property (nonatomic, retain) NSMutableArray* lessons;
 @end

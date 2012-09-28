@@ -11,7 +11,12 @@
 #import "TFHpple.h"
 #import "BSSubject.h"
 
+@interface BSModel ()
+@property (nonatomic, strong) BSWeek* week;
+@end
+
 @implementation BSModel
+@synthesize groupNumber=_groupNumber;
 
 +(BSModel *)sharedInstance{
     static dispatch_once_t onceToken;
@@ -22,6 +27,50 @@
     
     return sharedModel;
 }
+
+
+static NSString* kGroupNumberKey = @"kGroupNumber";
+
+-(NSString *)groupNumber{
+    if (!_groupNumber) {
+        _groupNumber = [[NSUserDefaults standardUserDefaults] objectForKey:kGroupNumberKey];
+    }
+    return _groupNumber;
+}
+
+-(void)setGroupNumber:(NSString *)groupNumber{
+    _groupNumber = groupNumber;
+    [[NSUserDefaults standardUserDefaults] setObject:groupNumber forKey:kGroupNumberKey];
+}
+
+
+-(void)downloadAndParseScheduleWithFinishBlock:(BSWeekBlock)block{
+    if (_week) {
+        block(_week);
+        return;
+    }
+
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    
+    NSString* stringUrl = [@"http://www.bsuir.by/psched/schedulegroup?group=" stringByAppendingString:[self groupNumber]];
+    NSURLRequest* request = [NSURLRequest requestWithURL:[NSURL URLWithString:stringUrl]];
+    
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:[NSOperationQueue currentQueue]
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+                               
+                               dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+                               
+                                   if (data.length) {
+                                       self.week = [self computeWorkWeekFromData:data];
+                                       [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                                       block(_week);
+                                   }
+                               });
+
+                           }];
+}
+
 
 -(BSWeek*)computeWorkWeekFromData:(NSData *)data
 {
