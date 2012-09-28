@@ -129,7 +129,6 @@
 		FEA1D4E81610576000B80721 = {
 			isa = PBXGroup;
 			children = (
-				FEA1D51D16105D8600B80721 /* Submodules */,
 				FEA1D4FD1610576000B80721 /* BSUIR Schedule */,
 				FEA1D4F61610576000B80721 /* Frameworks */,
 				FEA1D4F41610576000B80721 /* Products */,
@@ -186,13 +185,6 @@
 				FEA1D50D1610576000B80721 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		FEA1D51D16105D8600B80721 /* Submodules */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Submodules;
 			sourceTree = "<group>";
 		};
 		FED157BD16131A0400D3E5ED /* XPath */ = {

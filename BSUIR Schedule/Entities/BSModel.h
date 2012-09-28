@@ -10,10 +10,14 @@
 #import "BSWeekDay.h"
 #import "BSWeek.h"
 
+@class EKCalendar;
 typedef void (^BSWeekBlock)(BSWeek* workWeek);
 
 @interface BSModel : NSObject
+
 @property (nonatomic, strong) NSString* groupNumber;
+@property (nonatomic, strong) EKCalendar* selectedCalendar;
+
 +(BSModel*)sharedInstance;
 
 - (void)downloadAndParseScheduleWithFinishBlock:(BSWeekBlock)block;

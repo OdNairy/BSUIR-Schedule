@@ -11,8 +11,13 @@
 #import "TFHpple.h"
 #import "BSSubject.h"
 
+@interface BSModel ()
+@property (nonatomic, strong) BSWeek* week;
+@end
+
 @implementation BSModel
 @synthesize groupNumber=_groupNumber;
+
 +(BSModel *)sharedInstance{
     static dispatch_once_t onceToken;
     static BSModel* sharedModel = nil;
@@ -40,6 +45,11 @@ static NSString* kGroupNumberKey = @"kGroupNumber";
 
 
 -(void)downloadAndParseScheduleWithFinishBlock:(BSWeekBlock)block{
+    if (_week) {
+        block(_week);
+        return;
+    }
+
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
     NSString* stringUrl = [@"http://www.bsuir.by/psched/schedulegroup?group=" stringByAppendingString:[self groupNumber]];
@@ -52,9 +62,9 @@ static NSString* kGroupNumberKey = @"kGroupNumber";
                                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
                                
                                    if (data.length) {
-                                       BSWeek* week = [self computeWorkWeekFromData:data];
+                                       self.week = [self computeWorkWeekFromData:data];
                                        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-                                       block(week);
+                                       block(_week);
                                    }
                                });
 
