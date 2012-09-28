@@ -1,9 +1,3 @@
 [submodule "submodules"]
 	path = submodules
 	url = git://github.com/mobiata/MBRequest.git
-[submodule "submodules/MBRequest"]
-	path = submodules/MBRequest
-	url = git://github.com/mobiata/MBRequest.git
-[submodule "submodules/NSString-JS"]
-	path = submodules/NSString-JS
-	url = git@github.com:OdNairy/NSString-Javascript.git
