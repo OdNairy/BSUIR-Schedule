@@ -44,6 +44,7 @@
 }
 
 -(void)downloadAndParseScheduleWithFinishBlock:(BSWeekBlock)block{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     NSString* stringUrl = [@"http://www.bsuir.by/psched/schedulegroup?group=" stringByAppendingString:self.groupTextField.text];
     NSURLRequest* request = [NSURLRequest requestWithURL:[NSURL URLWithString:stringUrl]];
     
@@ -54,6 +55,7 @@
                                    if (data.length) {
                                        BSWeek* week = [[BSModel sharedInstance] computeWorkWeekFromData:data];
                                        block(week);
+                                       [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
                                    }
                                });
 //                               if (!error) {
