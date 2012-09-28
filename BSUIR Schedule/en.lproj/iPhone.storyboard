@@ -28,13 +28,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Subgroup #" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Tad-Hp-F1h">
-                                <rect key="frame" x="20" y="80" width="88" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="cPz-qZ-9Vd">
                                 <rect key="frame" x="116" y="134" width="125" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -60,6 +53,24 @@
                                     <segment title="3"/>
                                 </segments>
                             </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dMV-tC-XBr">
+                                <rect key="frame" x="20" y="69" width="88" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Subgroup #">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" red="0.42745101451873779" green="0.53333336114883423" blue="0.66666668653488159" alpha="1" colorSpace="deviceRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="clearSubgroup:" destination="2" eventType="touchUpInside" id="7qX-3p-igP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -71,6 +82,8 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="groupTextField" destination="sHQ-Fh-H6h" id="dE7-5g-Jrc"/>
+                        <outlet property="subgroupSegment" destination="A4H-oy-gb6" id="ef8-5H-gq8"/>
+                        <segue destination="wdO-SX-o0f" kind="push" id="Och-ni-v66"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
@@ -82,6 +95,27 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="228" y="39"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="RAV-8c-G7u">
+            <objects>
+                <viewController storyboardIdentifier="UsualController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wdO-SX-o0f" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BLf-zV-ivV">
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="ct6-hx-pl0">
+                                <rect key="frame" x="216" y="28" width="79" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </switch>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j82-7P-cej" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="767" y="211"/>
         </scene>
         <!--Select Calendar View Controller-->
         <scene sceneID="FA6-cS-1hP">
@@ -103,7 +137,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cu6-a0-9ip" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="657" y="39"/>
+            <point key="canvasLocation" x="765" y="-392"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Idg-id-CkO">
@@ -129,9 +163,11 @@
         <class className="SelectGroupViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SelectGroupViewController.h"/>
             <relationships>
+                <relationship kind="action" name="clearSubgroup:"/>
                 <relationship kind="action" name="hideKeyboard:"/>
                 <relationship kind="action" name="requestSchedule:"/>
                 <relationship kind="outlet" name="groupTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="subgroupSegment" candidateClass="UISegmentedControl"/>
             </relationships>
         </class>
     </classes>

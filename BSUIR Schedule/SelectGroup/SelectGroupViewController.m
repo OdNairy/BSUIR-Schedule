@@ -9,6 +9,7 @@
 #import "SelectGroupViewController.h"
 #import "BSWeek.h"
 #import "BSModel.h"
+#import "SelectCalendarViewController.h"
 
 #define MAX_DIGITAL_COUNT 7
 
@@ -43,10 +44,13 @@
     return newString.length<MAX_DIGITAL_COUNT;
 }
 
-
+-(IBAction)clearSubgroup:(id)sender{
+    [self.subgroupSegment setSelectedSegmentIndex:-1];
+}
 
 - (IBAction)requestSchedule:(id)sender {
     
+
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -56,6 +60,15 @@
         NSLog(@"%@",[workWeek firstWeekEvents]);
         
     }];
+    
+    SelectCalendarViewController* selectCalendar = [segue destinationViewController];
+    
+    UINavigationController* navigationController = self.navigationController;
+    selectCalendar.finishBlock = ^{
+        UIViewController* contr = [[UIStoryboard storyboardWithName:@"iPhone" bundle:nil] instantiateViewControllerWithIdentifier:@"UsualController"];
+        navigationController.viewControllers = @[contr];
+
+    };
 }
 
 @end

@@ -10,6 +10,7 @@
 #import "NSDate-Utilities.h"
 #import "TFHpple.h"
 #import "BSSubject.h"
+#import <EventKit/EventKit.h>
 
 @interface BSModel ()
 @property (nonatomic, strong) BSWeek* week;
@@ -146,7 +147,7 @@ static NSString* kGroupNumberKey = @"kGroupNumber";
             lesson.type = type;
             lesson.room = room;
             lesson.lecturer = [lecturer stringByReplacingPercentEscapesUsingEncoding:NSWindowsCP1251StringEncoding];
-            NSLog(@"%@",lesson);
+//            NSLog(@"%@",lesson);
             [workDay addLesson:lesson];
             
             //            NSString *updateSQL = [NSString stringWithFormat:@"insert into schedule (day, week, time, subgroup, subject, type, room, lecturer) values (%d, '%@', '%@', %d, '%@', '%@', '%@', '%@')", day, week, time, subgroup, subject, type, room, lecturer];

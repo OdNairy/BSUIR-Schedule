@@ -10,6 +10,7 @@
 #import <EventKit/EventKit.h>
 #import "SelectCalendarCell.h"
 #import "BSModel.h"
+
 @interface SelectCalendarViewController ()
 @property (nonatomic, strong) EKEventStore* store;
 @property (nonatomic, strong) NSMutableDictionary* groupedCalendars;
@@ -110,6 +111,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (_finishBlock) {
+        _finishBlock();
+    }
+    
     [BSModel sharedInstance].selectedCalendar = [self calendarForIndexPath:indexPath];
     NSLog(@"Selected calendar: %@",[BSModel sharedInstance].selectedCalendar.title);
     [self.presentingViewController dismissModalViewControllerAnimated:YES];
