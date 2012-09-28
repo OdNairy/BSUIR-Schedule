@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface SelectCalendarViewController : UITableViewController
+@property (nonatomic, copy) dispatch_block_t finishBlock;
 
 @end
