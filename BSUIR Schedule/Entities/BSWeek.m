@@ -7,6 +7,11 @@
 //
 
 #import "BSWeek.h"
+#import "BSSubject.h"
+
+@interface BSWeekDay ()
+@property (nonatomic, retain) NSMutableArray* lessons;
+@end
 
 @interface BSWeek ()
 @property (nonatomic, strong) NSMutableArray* weekDays;
@@ -25,6 +30,36 @@
 
 -(void)addWeekDay:(BSWeekDay *)weekDay{
     [self.weekDays addObject:weekDay];
+}
+
+-(BSWeekDay *)dayByWeekDay:(NSUInteger)day{
+
+    if (--day) {
+        return _weekDays[day-1];
+    }
+    return nil;
+}
+
+-(NSArray *)firstWeekEvents{
+    return [self eventsForWeekNumber:1];
+}
+
+
+-(NSArray*)eventsForWeekNumber:(NSUInteger)weekNumber
+{
+    NSMutableArray* array =[NSMutableArray array];
+    
+    for (BSWeekDay*day in self.weekDays) {
+        for (BSSubject* subject in day.lessons) {
+            NSRange range = [subject.week rangeOfString:[NSString stringWithFormat:@"%u",weekNumber]];
+            
+            if (range.length >0) {
+                [array addObject:subject];
+            }
+        }
+    }
+    
+    return array;
 }
 
 @end

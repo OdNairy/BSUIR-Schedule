@@ -10,10 +10,13 @@
 #import "BSWeekDay.h"
 #import "BSWeek.h"
 
-@interface BSModel : NSObject
+typedef void (^BSWeekBlock)(BSWeek* workWeek);
 
+@interface BSModel : NSObject
+@property (nonatomic, strong) NSString* groupNumber;
 +(BSModel*)sharedInstance;
 
+- (void)downloadAndParseScheduleWithFinishBlock:(BSWeekBlock)block;
 -(BSWeek*)computeWorkWeekFromData:(NSData*)data;
 
 @end

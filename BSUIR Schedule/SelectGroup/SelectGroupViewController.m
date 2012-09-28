@@ -43,36 +43,18 @@
     return newString.length<MAX_DIGITAL_COUNT;
 }
 
--(void)downloadAndParseScheduleWithFinishBlock:(BSWeekBlock)block{
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    NSString* stringUrl = [@"http://www.bsuir.by/psched/schedulegroup?group=" stringByAppendingString:self.groupTextField.text];
-    NSURLRequest* request = [NSURLRequest requestWithURL:[NSURL URLWithString:stringUrl]];
-    
-    [NSURLConnection sendAsynchronousRequest:request
-                                       queue:[NSOperationQueue currentQueue]
-                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-                               dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{                                   
-                                   if (data.length) {
-                                       BSWeek* week = [[BSModel sharedInstance] computeWorkWeekFromData:data];
-                                       block(week);
-                                       [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-                                   }
-                               });
-//                               if (!error) {
-//                                   [self respondsToSelector:@selector(statusCode)]
-//                               }
-    }];
-//    NSData* data = [NSData dataWithContentsOfURL:[request URL]];
-//    [[BSModel sharedInstance] computeWorkWeekFromData:data];
-}
+
 
 - (IBAction)requestSchedule:(id)sender {
     
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    [self downloadAndParseScheduleWithFinishBlock:^(BSWeek *workWeek) {
-        NSLog(@"%@",workWeek);
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    [BSModel sharedInstance].groupNumber = self.groupTextField.text;
+    [[BSModel sharedInstance] downloadAndParseScheduleWithFinishBlock:^(BSWeek *workWeek) {
+        NSLog(@"%@",[workWeek firstWeekEvents]);
+        
     }];
 }
 

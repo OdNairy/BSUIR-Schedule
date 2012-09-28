@@ -8,6 +8,7 @@
 
 #import "SelectCalendarViewController.h"
 #import <EventKit/EventKit.h>
+#import "SelectCalendarCell.h"
 
 @interface SelectCalendarViewController ()
 @property (nonatomic, strong) EKEventStore* store;
@@ -25,21 +26,29 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    _store = [[EKEventStore alloc] init];
-    _groupedCalendars = [[NSMutableDictionary alloc] init];
+-(NSMutableDictionary*)groupCalendars:(NSArray*)calendars{
+    NSMutableDictionary* groups = [NSMutableDictionary dictionaryWithCapacity:calendars.count];
     
     for (EKCalendar* calendar in _store.calendars) {
         if (calendar.type == EKCalendarTypeBirthday)
             continue;
-        NSMutableArray* arr = _groupedCalendars[calendar.source.title];
+        NSMutableArray* arr = groups[calendar.source.title];
         if (!arr) {
-            _groupedCalendars[calendar.source.title] = [NSMutableArray new];
+            groups[calendar.source.title] = [NSMutableArray new];
         }
         [arr addObject:calendar];
     }
+    
+    return groups;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    _store = [[EKEventStore alloc] init];
+    _groupedCalendars = [self groupCalendars:self.store.calendars];
+    
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -73,18 +82,20 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc]initWithStyle:(UITableViewCellStyleSubtitle) reuseIdentifier:CellIdentifier];
-    }
+    SelectCalendarCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     NSString* key = self.groupedCalendars.allKeys[indexPath.section];
     NSArray* calendars = self.groupedCalendars[key];
     EKCalendar* calendar = calendars[indexPath.row];
     
+    if (cell == nil) {
+        cell = [[SelectCalendarCell alloc]initWithStyle:(UITableViewCellStyleSubtitle) reuseIdentifier:CellIdentifier];
+        cell.linkedCalendar = calendar;
+    }
+    
+    
     cell.textLabel.text = calendar.title;
-    cell.detailTextLabel.text = calendar.source.title;
+//    cell.detailTextLabel.text = [[calendar source] performSelector:@selector(externalID)];
     cell.textLabel.textColor = [UIColor colorWithCGColor:calendar.CGColor];
     // Configure the cell...
     

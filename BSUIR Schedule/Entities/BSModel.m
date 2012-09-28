@@ -12,7 +12,7 @@
 #import "BSSubject.h"
 
 @implementation BSModel
-
+@synthesize groupNumber=_groupNumber;
 +(BSModel *)sharedInstance{
     static dispatch_once_t onceToken;
     static BSModel* sharedModel = nil;
@@ -22,6 +22,45 @@
     
     return sharedModel;
 }
+
+
+static NSString* kGroupNumberKey = @"kGroupNumber";
+
+-(NSString *)groupNumber{
+    if (!_groupNumber) {
+        _groupNumber = [[NSUserDefaults standardUserDefaults] objectForKey:kGroupNumberKey];
+    }
+    return _groupNumber;
+}
+
+-(void)setGroupNumber:(NSString *)groupNumber{
+    _groupNumber = groupNumber;
+    [[NSUserDefaults standardUserDefaults] setObject:groupNumber forKey:kGroupNumberKey];
+}
+
+
+-(void)downloadAndParseScheduleWithFinishBlock:(BSWeekBlock)block{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    
+    NSString* stringUrl = [@"http://www.bsuir.by/psched/schedulegroup?group=" stringByAppendingString:[self groupNumber]];
+    NSURLRequest* request = [NSURLRequest requestWithURL:[NSURL URLWithString:stringUrl]];
+    
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:[NSOperationQueue currentQueue]
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+                               
+                               dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+                               
+                                   if (data.length) {
+                                       BSWeek* week = [self computeWorkWeekFromData:data];
+                                       [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                                       block(week);
+                                   }
+                               });
+
+                           }];
+}
+
 
 -(BSWeek*)computeWorkWeekFromData:(NSData *)data
 {
