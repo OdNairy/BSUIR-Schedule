@@ -16,6 +16,8 @@
 		FE21A2041615E5E30059E4AC /* SelectCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE21A2031615E5E30059E4AC /* SelectCalendarCell.m */; };
 		FE43D4621616EB830018E931 /* MainScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE43D4611616EB830018E931 /* MainScreenViewController.m */; };
 		FE43D4971616F9A60018E931 /* Calendar_button_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FE43D4961616F9A60018E931 /* Calendar_button_bg@2x.png */; };
+		FE43D4A51616FEF20018E931 /* app_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FE43D4A41616FEF20018E931 /* app_icon.png */; };
+		FE43D4A71616FEF60018E931 /* app_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FE43D4A61616FEF60018E931 /* app_icon@2x.png */; };
 		FEA1D4F81610576000B80721 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEA1D4F71610576000B80721 /* UIKit.framework */; };
 		FEA1D4FA1610576000B80721 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEA1D4F91610576000B80721 /* Foundation.framework */; };
 		FEA1D4FC1610576000B80721 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEA1D4FB1610576000B80721 /* CoreGraphics.framework */; };
@@ -24,7 +26,6 @@
 		FEA1D5081610576000B80721 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA1D5071610576000B80721 /* AppDelegate.m */; };
 		FEA1D50A1610576000B80721 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = FEA1D5091610576000B80721 /* Default.png */; };
 		FEA1D50C1610576000B80721 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FEA1D50B1610576000B80721 /* Default@2x.png */; };
-		FEA1D50E1610576000B80721 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FEA1D50D1610576000B80721 /* Default-568h@2x.png */; };
 		FEA1D5111610576000B80721 /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEA1D50F1610576000B80721 /* iPhone.storyboard */; };
 		FEA1D5141610576000B80721 /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEA1D5121610576000B80721 /* iPad.storyboard */; };
 		FED157BA161319C800D3E5ED /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FED157B9161319C800D3E5ED /* EventKit.framework */; };
@@ -53,6 +54,8 @@
 		FE43D4601616EB830018E931 /* MainScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainScreenViewController.h; path = MainScreen/MainScreenViewController.h; sourceTree = "<group>"; };
 		FE43D4611616EB830018E931 /* MainScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainScreenViewController.m; path = MainScreen/MainScreenViewController.m; sourceTree = "<group>"; };
 		FE43D4961616F9A60018E931 /* Calendar_button_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Calendar_button_bg@2x.png"; path = "../../Pictures/Calendar_button_bg@2x.png"; sourceTree = "<group>"; };
+		FE43D4A41616FEF20018E931 /* app_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = app_icon.png; path = ../app_icon.png; sourceTree = "<group>"; };
+		FE43D4A61616FEF60018E931 /* app_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "app_icon@2x.png"; path = "../app_icon@2x.png"; sourceTree = "<group>"; };
 		FEA1D4F31610576000B80721 /* BSUIR Schedule.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BSUIR Schedule.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEA1D4F71610576000B80721 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FEA1D4F91610576000B80721 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -65,7 +68,6 @@
 		FEA1D5071610576000B80721 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		FEA1D5091610576000B80721 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		FEA1D50B1610576000B80721 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		FEA1D50D1610576000B80721 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		FEA1D5101610576000B80721 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/iPhone.storyboard; sourceTree = "<group>"; };
 		FEA1D5131610576000B80721 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/iPad.storyboard; sourceTree = "<group>"; };
 		FED157B9161319C800D3E5ED /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
@@ -191,7 +193,8 @@
 				FEA1D5051610576000B80721 /* BSUIR Schedule-Prefix.pch */,
 				FEA1D5091610576000B80721 /* Default.png */,
 				FEA1D50B1610576000B80721 /* Default@2x.png */,
-				FEA1D50D1610576000B80721 /* Default-568h@2x.png */,
+				FE43D4A61616FEF60018E931 /* app_icon@2x.png */,
+				FE43D4A41616FEF20018E931 /* app_icon.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -270,10 +273,11 @@
 				FEA1D5021610576000B80721 /* InfoPlist.strings in Resources */,
 				FEA1D50A1610576000B80721 /* Default.png in Resources */,
 				FEA1D50C1610576000B80721 /* Default@2x.png in Resources */,
-				FEA1D50E1610576000B80721 /* Default-568h@2x.png in Resources */,
 				FEA1D5111610576000B80721 /* iPhone.storyboard in Resources */,
 				FEA1D5141610576000B80721 /* iPad.storyboard in Resources */,
 				FE43D4971616F9A60018E931 /* Calendar_button_bg@2x.png in Resources */,
+				FE43D4A51616FEF20018E931 /* app_icon.png in Resources */,
+				FE43D4A71616FEF60018E931 /* app_icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
