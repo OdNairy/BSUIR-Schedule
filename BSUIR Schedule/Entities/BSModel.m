@@ -46,6 +46,9 @@ static NSString* kGroupNumberKey = @"kGroupNumber";
 
 
 -(void)downloadAndParseScheduleWithFinishBlock:(BSWeekBlock)block{
+#ifdef ECONOMY_TRAFFIC
+    return;
+#endif
     if (_week) {
         block(_week);
         return;

@@ -14,6 +14,8 @@
 		FE098FC416144F8700A98F7B /* BSModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FE098FC316144F8700A98F7B /* BSModel.m */; };
 		FE161CA81614FCFD00D9D440 /* SelectCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE161CA71614FCFD00D9D440 /* SelectCalendarViewController.m */; };
 		FE21A2041615E5E30059E4AC /* SelectCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE21A2031615E5E30059E4AC /* SelectCalendarCell.m */; };
+		FE43D4621616EB830018E931 /* MainScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE43D4611616EB830018E931 /* MainScreenViewController.m */; };
+		FE43D4971616F9A60018E931 /* Calendar_button_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FE43D4961616F9A60018E931 /* Calendar_button_bg@2x.png */; };
 		FEA1D4F81610576000B80721 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEA1D4F71610576000B80721 /* UIKit.framework */; };
 		FEA1D4FA1610576000B80721 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEA1D4F91610576000B80721 /* Foundation.framework */; };
 		FEA1D4FC1610576000B80721 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEA1D4FB1610576000B80721 /* CoreGraphics.framework */; };
@@ -24,7 +26,7 @@
 		FEA1D50C1610576000B80721 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FEA1D50B1610576000B80721 /* Default@2x.png */; };
 		FEA1D50E1610576000B80721 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FEA1D50D1610576000B80721 /* Default-568h@2x.png */; };
 		FEA1D5111610576000B80721 /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEA1D50F1610576000B80721 /* iPhone.storyboard */; };
-		FEA1D5141610576000B80721 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEA1D5121610576000B80721 /* MainStoryboard_iPad.storyboard */; };
+		FEA1D5141610576000B80721 /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEA1D5121610576000B80721 /* iPad.storyboard */; };
 		FED157BA161319C800D3E5ED /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FED157B9161319C800D3E5ED /* EventKit.framework */; };
 		FED157BC161319F800D3E5ED /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FED157BB161319F800D3E5ED /* libxml2.dylib */; };
 		FED157C416131A0E00D3E5ED /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = FED157BF16131A0E00D3E5ED /* TFHpple.m */; };
@@ -48,6 +50,9 @@
 		FE161CA71614FCFD00D9D440 /* SelectCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectCalendarViewController.m; path = "Select Calendar/SelectCalendarViewController.m"; sourceTree = "<group>"; };
 		FE21A2021615E5E30059E4AC /* SelectCalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectCalendarCell.h; path = "Select Calendar/SelectCalendarCell.h"; sourceTree = "<group>"; };
 		FE21A2031615E5E30059E4AC /* SelectCalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectCalendarCell.m; path = "Select Calendar/SelectCalendarCell.m"; sourceTree = "<group>"; };
+		FE43D4601616EB830018E931 /* MainScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainScreenViewController.h; path = MainScreen/MainScreenViewController.h; sourceTree = "<group>"; };
+		FE43D4611616EB830018E931 /* MainScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainScreenViewController.m; path = MainScreen/MainScreenViewController.m; sourceTree = "<group>"; };
+		FE43D4961616F9A60018E931 /* Calendar_button_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Calendar_button_bg@2x.png"; path = "../../Pictures/Calendar_button_bg@2x.png"; sourceTree = "<group>"; };
 		FEA1D4F31610576000B80721 /* BSUIR Schedule.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BSUIR Schedule.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEA1D4F71610576000B80721 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FEA1D4F91610576000B80721 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -62,7 +67,7 @@
 		FEA1D50B1610576000B80721 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		FEA1D50D1610576000B80721 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		FEA1D5101610576000B80721 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/iPhone.storyboard; sourceTree = "<group>"; };
-		FEA1D5131610576000B80721 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		FEA1D5131610576000B80721 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/iPad.storyboard; sourceTree = "<group>"; };
 		FED157B9161319C800D3E5ED /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		FED157BB161319F800D3E5ED /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		FED157BE16131A0E00D3E5ED /* TFHpple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHpple.h; sourceTree = "<group>"; };
@@ -129,6 +134,7 @@
 		FEA1D4E81610576000B80721 = {
 			isa = PBXGroup;
 			children = (
+				FE43D4961616F9A60018E931 /* Calendar_button_bg@2x.png */,
 				FEA1D51D16105D8600B80721 /* Submodules */,
 				FEA1D4FD1610576000B80721 /* BSUIR Schedule */,
 				FEA1D4F61610576000B80721 /* Frameworks */,
@@ -166,9 +172,11 @@
 				FEA1D5061610576000B80721 /* AppDelegate.h */,
 				FEA1D5071610576000B80721 /* AppDelegate.m */,
 				FEA1D50F1610576000B80721 /* iPhone.storyboard */,
+				FE43D4601616EB830018E931 /* MainScreenViewController.h */,
+				FE43D4611616EB830018E931 /* MainScreenViewController.m */,
+				FEA1D5121610576000B80721 /* iPad.storyboard */,
 				FE161CAA1614FE2A00D9D440 /* SelectCalendar */,
 				FE098FB7161442D100A98F7B /* Select Group */,
-				FEA1D5121610576000B80721 /* MainStoryboard_iPad.storyboard */,
 				FEA1D4FE1610576000B80721 /* Supporting Files */,
 			);
 			path = "BSUIR Schedule";
@@ -264,7 +272,8 @@
 				FEA1D50C1610576000B80721 /* Default@2x.png in Resources */,
 				FEA1D50E1610576000B80721 /* Default-568h@2x.png in Resources */,
 				FEA1D5111610576000B80721 /* iPhone.storyboard in Resources */,
-				FEA1D5141610576000B80721 /* MainStoryboard_iPad.storyboard in Resources */,
+				FEA1D5141610576000B80721 /* iPad.storyboard in Resources */,
+				FE43D4971616F9A60018E931 /* Calendar_button_bg@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,6 +297,7 @@
 				FE098FC416144F8700A98F7B /* BSModel.m in Sources */,
 				FE161CA81614FCFD00D9D440 /* SelectCalendarViewController.m in Sources */,
 				FE21A2041615E5E30059E4AC /* SelectCalendarCell.m in Sources */,
+				FE43D4621616EB830018E931 /* MainScreenViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,17 +320,63 @@
 			name = iPhone.storyboard;
 			sourceTree = "<group>";
 		};
-		FEA1D5121610576000B80721 /* MainStoryboard_iPad.storyboard */ = {
+		FEA1D5121610576000B80721 /* iPad.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				FEA1D5131610576000B80721 /* en */,
 			);
-			name = MainStoryboard_iPad.storyboard;
+			name = iPad.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		FE43D4941616F0500018E931 /* Debug (Econom) */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = "Debug (Econom)";
+		};
+		FE43D4951616F0500018E931 /* Debug (Econom) */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BSUIR Schedule/BSUIR Schedule-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"ECONOMY_TRAFFIC=1",
+				);
+				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2/**";
+				INFOPLIST_FILE = "BSUIR Schedule/BSUIR Schedule-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = "Debug (Econom)";
+		};
 		FEA1D5181610576000B80721 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -405,6 +461,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FEA1D5181610576000B80721 /* Debug */,
+				FE43D4941616F0500018E931 /* Debug (Econom) */,
 				FEA1D5191610576000B80721 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -414,6 +471,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FEA1D51B1610576000B80721 /* Debug */,
+				FE43D4951616F0500018E931 /* Debug (Econom) */,
 				FEA1D51C1610576000B80721 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;

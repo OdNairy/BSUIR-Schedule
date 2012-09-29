@@ -13,8 +13,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {    
-    // Override point for customization after application launch.
-//    [Subject writeDB];
+#ifdef ECONOMY_TRAFFIC
+    printf("Application is launched in ECONOMY mode\n");
+#endif
     return YES;
 }
 							

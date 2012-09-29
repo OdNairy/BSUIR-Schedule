@@ -48,26 +48,20 @@
     [self.subgroupSegment setSelectedSegmentIndex:-1];
 }
 
-- (IBAction)requestSchedule:(id)sender {
-    
-
-}
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     [BSModel sharedInstance].groupNumber = self.groupTextField.text;
     [[BSModel sharedInstance] downloadAndParseScheduleWithFinishBlock:^(BSWeek *workWeek) {
         NSLog(@"%@",[workWeek firstWeekEvents]);
-        
     }];
     
     SelectCalendarViewController* selectCalendar = [segue destinationViewController];
     
     UINavigationController* navigationController = self.navigationController;
     selectCalendar.finishBlock = ^{
-        UIViewController* contr = [[UIStoryboard storyboardWithName:@"iPhone" bundle:nil] instantiateViewControllerWithIdentifier:@"UsualController"];
+        UIViewController* contr = [[UIStoryboard storyboardWithName:@"iPhone" bundle:nil] instantiateViewControllerWithIdentifier:@"MainScreenViewController"];
         navigationController.viewControllers = @[contr];
-
     };
 }
 

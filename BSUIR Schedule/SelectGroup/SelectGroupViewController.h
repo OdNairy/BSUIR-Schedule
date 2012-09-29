@@ -18,7 +18,6 @@
 @property (nonatomic, strong) IBOutlet UISegmentedControl* subgroupSegment;
 
 -(IBAction)hideKeyboard:(id)sender;
--(IBAction)requestSchedule:(id)sender;
 
 
 @end

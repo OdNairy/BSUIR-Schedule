@@ -111,12 +111,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    [BSModel sharedInstance].selectedCalendar = [self calendarForIndexPath:indexPath];
+    NSLog(@"Selected calendar: %@ (%@)",[BSModel sharedInstance].selectedCalendar.title,[BSModel sharedInstance].selectedCalendar.source.title);
     if (_finishBlock) {
         _finishBlock();
     }
-    
-    [BSModel sharedInstance].selectedCalendar = [self calendarForIndexPath:indexPath];
-    NSLog(@"Selected calendar: %@",[BSModel sharedInstance].selectedCalendar.title);
     [self.presentingViewController dismissModalViewControllerAnimated:YES];
 }
 
