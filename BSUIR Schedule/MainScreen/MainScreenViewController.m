@@ -55,4 +55,23 @@
     };
 }
 
+- (void)viewDidUnload {
+    [self setAlarmTimeStepper:nil];
+    [self setAlarmTimeLabel:nil];
+    [super viewDidUnload];
+}
+
+#pragma mark - Actions
+
+- (IBAction)alarmTimeStepperChanged:(UIStepper*)sender {
+    NSUInteger stepperTime = (NSUInteger)sender;
+    self.alarmTimeLabel.text = [NSString stringWithFormat:@"%u",stepperTime];
+}
+
+- (IBAction)alarmsOnChanged:(UISwitch*)sender {
+    
+}
+
+
+
 @end

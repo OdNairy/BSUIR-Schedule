@@ -10,5 +10,8 @@
 
 @interface MainScreenViewController : UIViewController
 @property (nonatomic, strong) IBOutlet UIButton* openCalendarWindowButton;
+@property (strong, nonatomic) IBOutlet UIStepper *alarmTimeStepper;
+@property (strong, nonatomic) IBOutlet UILabel *alarmTimeLabel;
+
 
 @end

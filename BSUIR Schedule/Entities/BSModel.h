@@ -17,6 +17,7 @@ typedef void (^BSWeekBlock)(BSWeek* workWeek);
 
 @property (nonatomic, strong) NSString* groupNumber;
 @property (nonatomic, strong) EKCalendar* selectedCalendar;
+@property (nonatomic, assign) BOOL alertsEnabled;
 
 +(BSModel*)sharedInstance;
 

@@ -18,12 +18,14 @@
 
 @implementation BSModel
 @synthesize groupNumber=_groupNumber;
+@synthesize alertsEnabled=_alertsEnabled;
 
 +(BSModel *)sharedInstance{
     static dispatch_once_t onceToken;
     static BSModel* sharedModel = nil;
     dispatch_once(&onceToken, ^{
         sharedModel = [[BSModel alloc] init];
+        sharedModel.alertsEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:kAlertsEnabledKey];
     });
     
     return sharedModel;
@@ -31,6 +33,7 @@
 
 
 static NSString* kGroupNumberKey = @"kGroupNumber";
+static NSString* kAlertsEnabledKey = @"kAlertsEnabledKey";
 
 -(NSString *)groupNumber{
     if (!_groupNumber) {
@@ -44,6 +47,14 @@ static NSString* kGroupNumberKey = @"kGroupNumber";
     [[NSUserDefaults standardUserDefaults] setObject:groupNumber forKey:kGroupNumberKey];
 }
 
+-(BOOL)alertsEnabled{
+    return _alertsEnabled;
+}
+
+-(void)setAlertsEnabled:(BOOL)alertsEnabled{
+    _alertsEnabled = alertsEnabled;
+    [[NSUserDefaults standardUserDefaults] setBool:alertsEnabled forKey:kAlertsEnabledKey];
+}
 
 -(void)downloadAndParseScheduleWithFinishBlock:(BSWeekBlock)block{
 #ifdef ECONOMY_TRAFFIC
