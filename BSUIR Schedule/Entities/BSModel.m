@@ -45,6 +45,7 @@ static NSString* kAlertsEnabledKey = @"kAlertsEnabledKey";
 -(void)setGroupNumber:(NSString *)groupNumber{
     _groupNumber = groupNumber;
     [[NSUserDefaults standardUserDefaults] setObject:groupNumber forKey:kGroupNumberKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 -(BOOL)alertsEnabled{
@@ -95,7 +96,7 @@ static NSString* kAlertsEnabledKey = @"kAlertsEnabledKey";
     NSString *week, *time, * subject, *type, *room, *lecturer;
     NSString *tmp = nil;
     
-    NSMutableArray* subjects = [NSMutableArray array];
+//    NSMutableArray* subjects = [NSMutableArray array];
     
     BSWeek* workWeek = [[BSWeek alloc] init];
     

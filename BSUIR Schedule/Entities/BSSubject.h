@@ -25,5 +25,5 @@
 
 -(BOOL)saveSubjectToCalendar:(EKCalendar *)calendar andEventStore:(EKEventStore*)store;
 
-+(void)writeDB;
+-(void)writeDB;
 @end

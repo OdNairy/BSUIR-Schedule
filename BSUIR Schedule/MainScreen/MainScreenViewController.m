@@ -10,9 +10,9 @@
 #import "SelectCalendarViewController.h"
 #import "BSModel.h"
 #import <EventKit/EventKit.h>
-
+#import "BSSubject.h"
 @interface MainScreenViewController ()
-
+@property (nonatomic, strong) EKEventStore* store;
 @end
 
 @implementation MainScreenViewController
@@ -30,12 +30,24 @@
 {
     [super viewDidLoad];
     self.navigationItem.titleView = self.openCalendarWindowButton;
-
+    _store = [[EKEventStore alloc] init];
+    [_store requestAccessToEntityType:(EKEntityTypeEvent) completion:^(BOOL granted, NSError *error) {
+    }];
+//    [EKEventStore authorizationStatusForEntityType:(EKEntityTypeEvent)]
 	// Do any additional setup after loading the view.
 }
+- (IBAction)addToCalendar:(id)sender {
+    [[BSModel sharedInstance] downloadAndParseScheduleWithFinishBlock:^(BSWeek *workWeek) {
+//        NSLog(@"%@",[workWeek firstWeekEvents]);
+        
+        for (BSSubject* bs in workWeek.firstWeekEvents) {
+            [bs saveSubjectToCalendar:[BSModel sharedInstance].selectedCalendar
+                        andEventStore:[BSModel sharedInstance].store];
+        }
+    }];
+}
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     EKCalendar* calendar = [BSModel sharedInstance].selectedCalendar;
     [self.openCalendarWindowButton setTitle:calendar.title forState:(UIControlStateNormal)];
@@ -43,17 +55,15 @@
     
     [self.openCalendarWindowButton setTitleColor:textColor forState:(UIControlStateNormal)];
     [self.openCalendarWindowButton setTitleColor:textColor forState:(UIControlStateHighlighted)];
-
-
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     SelectCalendarViewController* selectCalendar = [segue destinationViewController];
     
     UINavigationController* navigationController = self.navigationController;
-    selectCalendar.finishBlock = ^{
-        [navigationController dismissModalViewControllerAnimated:YES];
-    };
+//    selectCalendar.finishBlock = ^{
+//        [navigationController dismissModalViewControllerAnimated:YES];
+//    };
 }
 
 - (void)viewDidUnload {
@@ -73,7 +83,6 @@
     self.alarmTimeLabel.enabled = self.alarmTimeStepper.enabled = sender.on;
 
 }
-
 
 
 @end

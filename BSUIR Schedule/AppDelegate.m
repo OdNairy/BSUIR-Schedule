@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "BSSubject.h"
+#import "BSModel.h"
+#import <EventKit/EventKit.h>
 
 @implementation AppDelegate
 
@@ -16,6 +18,16 @@
 #ifdef ECONOMY_TRAFFIC
     printf("Application is launched in ECONOMY mode\n");
 #endif
+    [[BSModel sharedInstance] downloadAndParseScheduleWithFinishBlock:^(BSWeek *workWeek) {
+        EKEventStore* store = [[EKEventStore alloc]init];
+        uint i = 0;
+        for (EKCalendar* calendar in store.calendars) {
+            printf("#%d: %s\n",i++,calendar.title.UTF8String);
+        }
+        for (BSSubject* subject in workWeek.firstWeekEvents) {
+            [subject saveSubjectToCalendar:store.calendars[6] andEventStore:store];
+        }
+    }];
     return YES;
 }
 							

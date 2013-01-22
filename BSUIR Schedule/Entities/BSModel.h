@@ -10,13 +10,15 @@
 #import "BSWeekDay.h"
 #import "BSWeek.h"
 
-@class EKCalendar;
+@class EKCalendar,EKEventStore;
 typedef void (^BSWeekBlock)(BSWeek* workWeek);
 
 @interface BSModel : NSObject
 
 @property (nonatomic, strong) NSString* groupNumber;
 @property (nonatomic, strong) EKCalendar* selectedCalendar;
+@property (nonatomic, strong) EKEventStore* store;
+
 @property (nonatomic, assign) BOOL alertsEnabled;
 
 +(BSModel*)sharedInstance;

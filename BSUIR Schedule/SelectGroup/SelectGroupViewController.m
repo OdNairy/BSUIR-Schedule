@@ -52,9 +52,6 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     [BSModel sharedInstance].groupNumber = self.groupTextField.text;
-    [[BSModel sharedInstance] downloadAndParseScheduleWithFinishBlock:^(BSWeek *workWeek) {
-//        NSLog(@"%@",[workWeek firstWeekEvents]);
-    }];
     
     SelectCalendarViewController* selectCalendar = [segue destinationViewController];
     

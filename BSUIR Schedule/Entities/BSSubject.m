@@ -122,7 +122,7 @@
     [[NSUserDefaults standardUserDefaults] setObject:numberWeekOfYear forKey:@"lastUpdateWeek"];
     [[NSUserDefaults standardUserDefaults] setObject:numberDayOfYear forKey:@"lastUpdateDay"];
     
-    NSLog(@"%@",subjects);
+//    NSLog(@"%@",subjects);
     // Print db
     
     NSArray *array = nil;//;[SQLiteAccess selectManyRowsWithSQL:@"select * from schedule"];
@@ -198,104 +198,98 @@ typedef enum {
 
 -(BOOL)saveSubjectToCalendar:(EKCalendar *)calendar andEventStore:(EKEventStore*)store
 {
-    assert([calendar.title isEqualToString:@"Test"]);
-    
-    NSString *string = _time;
-    //     NSString *expression = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
-    NSString *expression = @"(\\d{1,2}):(\\d{1,2})-(\\d{1,2}):(\\d{1,2})";
-    NSError *error = NULL;
-    
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:expression options:NSRegularExpressionCaseInsensitive error:&error];
-//    NSTextCheckingResult* result = [regex firstMatchInString:string options:0 range:NSMakeRange(0, string.length)];
-    
-    NSCalendar* calendarForDate = [NSCalendar currentCalendar];
-//    calendarForDate.timeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
-    NSDateComponents* dateFromComp = [calendarForDate components: NSWeekOfYearCalendarUnit| NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit fromDate:[NSDate date]];
-
-//    NSDateComponents* dateToComp = [calendarForDate components: NSWeekOfYearCalendarUnit| NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit fromDate:[NSDate date]];
-    NSDateComponents* dateToComp = [dateFromComp copy];
-    
-    NSInteger week = dateFromComp.weekOfYear;
-    EKRecurrenceEnd* end = nil;
-    
-    Term term = -1;
-    if (week > 30) {
-        // First semester
-        term = TermFirst;
+    static BOOL saved = NO;
+    @synchronized(self){
+        if (saved) {
+            return YES;
+        }
+        assert([calendar.title hasPrefix:@"Test"]);
         
-        dateToComp.month = 12;
-        dateToComp.day = 20;
-    }else{
-        // Second semester
-        term = TermSecond;
-        dateToComp.month = 6;
-        dateToComp.day = 15;
-    }
-    
-    NSDate* endDate = [calendarForDate dateFromComponents:dateToComp];
-    end = [EKRecurrenceEnd recurrenceEndWithEndDate:endDate];
-    
-
-    NSTextCheckingResult* match = [regex firstMatchInString:string options:0 range:NSMakeRange(0, string.length)];
-    if (match.numberOfRanges >= 5) {
-
-        EKEvent* event = [self dateTimeForTerm:term week:[[_week substringToIndex:1] integerValue]
-                                           day:_day+1+1 // one +1 is to move start index to [1,...,7], second +1 is to change week start from Monday (instead Sunday)
-                                          hour:[[string substringWithRange:[match rangeAtIndex:1]] integerValue]
-                                        minute:[[string substringWithRange:[match rangeAtIndex:2]] integerValue]
-                                    finishHour:[[string substringWithRange:[match rangeAtIndex:3]] integerValue]
-                                  finishMinute:[[string substringWithRange:[match rangeAtIndex:4]] integerValue] store:store];
-        event.title = _subject;
-        if (![_type isEqualToString:@" – "]) {
-            event.title = [event.title stringByAppendingFormat:@" (%@)",_type];
-        }
-        event.notes = _lecturer;
-        if (_subgroup) {
-            event.title = [event.title stringByAppendingFormat:@"[%d]",_subgroup];
-        }
-        EKAlarm* alarm = [EKAlarm alarmWithRelativeOffset:-20*60];
-        event.alarms = @[alarm];
+        NSString *string = _time;
+        NSString *expression = @"(\\d{1,2}):(\\d{1,2})-(\\d{1,2}):(\\d{1,2})";
+        NSError *error = NULL;
         
-        EKRecurrenceRule* rule = nil;
-        if ([_week isEqualToString:@"0"]) {
-            rule = [[EKRecurrenceRule alloc] initRecurrenceWithFrequency:(EKRecurrenceFrequencyWeekly) interval:1 end:end];
-        }else if(_week.length == 1){
-            rule = [[EKRecurrenceRule alloc] initRecurrenceWithFrequency:(EKRecurrenceFrequencyWeekly) interval:4 end:end];
-        }else if (_week.length == 2){
-            rule = [[EKRecurrenceRule alloc] initRecurrenceWithFrequency:(EKRecurrenceFrequencyWeekly) interval:2 end:end];
-        }
-        event.recurrenceRules = @[rule];
-
-        event.location = _room;
-        event.calendar = calendar;
-        NSError* error = nil;
-        BOOL saved = [store saveEvent:event span:(EKSpanThisEvent) error:&error];
-        if (!saved) {
-            NSLog(@"Save error: %@",error);
+        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:expression options:NSRegularExpressionCaseInsensitive error:&error];
+        //    NSTextCheckingResult* result = [regex firstMatchInString:string options:0 range:NSMakeRange(0, string.length)];
+        
+        NSCalendar* calendarForDate = [NSCalendar currentCalendar];
+        //    calendarForDate.timeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
+        NSDateComponents* dateFromComp = [calendarForDate components: NSWeekOfYearCalendarUnit| NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit fromDate:[NSDate date]];
+        
+        //    NSDateComponents* dateToComp = [calendarForDate components: NSWeekOfYearCalendarUnit| NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit fromDate:[NSDate date]];
+        NSDateComponents* dateToComp = [dateFromComp copy];
+        
+        NSInteger week = dateFromComp.weekOfYear;
+        EKRecurrenceEnd* end = nil;
+        
+        Term term = -1;
+        if (week > 30) {
+            // First semester
+            term = TermFirst;
+            
+            dateToComp.month = 12;
+            dateToComp.day = 20;
         }else{
-            NSLog(@"Saved event: %@",event);
+            // Second semester
+            term = TermSecond;
+            dateToComp.month = 6;
+            dateToComp.day = 15;
         }
         
+        NSDate* endDate = [calendarForDate dateFromComponents:dateToComp];
+        end = [EKRecurrenceEnd recurrenceEndWithEndDate:endDate];
+        
+        
+        NSTextCheckingResult* match = [regex firstMatchInString:string options:0 range:NSMakeRange(0, string.length)];
+        if (match.numberOfRanges >= 5) {
+            
+            EKEvent* event = [self dateTimeForTerm:term week:[[_week substringToIndex:1] integerValue]
+                                               day:_day+1+1 // one +1 is to move start index to [1,...,7], second +1 is to change week start from Monday (instead Sunday)
+                                              hour:[[string substringWithRange:[match rangeAtIndex:1]] integerValue]
+                                            minute:[[string substringWithRange:[match rangeAtIndex:2]] integerValue]
+                                        finishHour:[[string substringWithRange:[match rangeAtIndex:3]] integerValue]
+                                      finishMinute:[[string substringWithRange:[match rangeAtIndex:4]] integerValue] store:store];
+            event.title = _subject;
+            if (![_type isEqualToString:@" – "]) {
+                event.title = [event.title stringByAppendingFormat:@" (%@)",_type];
+            }
+            event.notes = _lecturer;
+            if (_subgroup) {
+                event.title = [event.title stringByAppendingFormat:@"[%d]",_subgroup];
+            }
+            EKAlarm* alarm = [EKAlarm alarmWithRelativeOffset:-20*60];
+            event.alarms = @[alarm];
+            
+            NSArray* rule = nil;
+            if ([_week isEqualToString:@"0"]) {
+                rule = @[[[EKRecurrenceRule alloc] initRecurrenceWithFrequency:(EKRecurrenceFrequencyWeekly) interval:1 end:end]];
+            }else if(_week.length == 1){
+                rule = @[[[EKRecurrenceRule alloc] initRecurrenceWithFrequency:(EKRecurrenceFrequencyWeekly) interval:4 end:end]];
+            }else if (_week.length == 2){
+                rule = @[[[EKRecurrenceRule alloc] initRecurrenceWithFrequency:(EKRecurrenceFrequencyWeekly) interval:2 end:end]];
+            }else if (_week.length == 3){
+                // _week = '123'
+                EKRecurrenceRule* firstRule = [[EKRecurrenceRule alloc] initRecurrenceWithFrequency:(EKRecurrenceFrequencyWeekly) interval:2 end:end];
+                EKRecurrenceRule* secondRule = [[EKRecurrenceRule alloc] initRecurrenceWithFrequency:(EKRecurrenceFrequencyWeekly) interval:4 end:end];
+                rule = @[firstRule];
+                NSLog(@"!!! WARNING !!!: Should manually create event for 2nd week: %@ [%@]",self.subject,self.time);
+            }
+            event.recurrenceRules = rule;
+            
+            event.location = _room;
+            event.calendar = calendar;
+            NSError* error = nil;
+            BOOL saved = [store saveEvent:event span:(EKSpanThisEvent) error:&error];
+            if (!saved) {
+                NSLog(@"Save error: %@",error);
+            }else{
+                NSLog(@"Saved event: %@",event);
+            }
+            
+        }
+        
+        return saved = YES;
     }
-    
-//    NSArray* matches = [regex matchesInString:string options:0 range:NSMakeRange(0, string.length)];
-//    
-//    for (NSTextCheckingResult *match in matches) {
-//        for (uint i = 0; i<match.numberOfRanges; ++i) {
-//            NSRange range = [match rangeAtIndex:i];
-//            NSLog(@"Range %d: %@",i+1,[_time substringWithRange:range]);
-//        }
-//    }
-    
-    
-    
-//    EKEventStore* store = [[EKEventStore alloc] init];
-//    EKEvent* event = [EKEvent eventWithEventStore:store];
-    
-//    NSLog(@"Time: %@",_time);
-    
-    
-    return YES;
 }
 
 
@@ -311,9 +305,8 @@ hour:(NSInteger)hour minute:(NSInteger)minute finishHour:(NSInteger)finishHour f
         yearOfFirstWeek--;
     }
     
-    
     NSDateComponents* components = [[NSDateComponents alloc] init];
-//    components.timeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
+    components.timeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
     components.year = yearOfFirstWeek;
     
     

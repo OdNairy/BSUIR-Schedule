@@ -14,6 +14,7 @@
 		FE098FC416144F8700A98F7B /* BSModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FE098FC316144F8700A98F7B /* BSModel.m */; };
 		FE161CA81614FCFD00D9D440 /* SelectCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE161CA71614FCFD00D9D440 /* SelectCalendarViewController.m */; };
 		FE21A2041615E5E30059E4AC /* SelectCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE21A2031615E5E30059E4AC /* SelectCalendarCell.m */; };
+		FE28FE3016AE87C100E0CF05 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FE28FE2F16AE87C100E0CF05 /* Default-568h@2x.png */; };
 		FE43D4621616EB830018E931 /* MainScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE43D4611616EB830018E931 /* MainScreenViewController.m */; };
 		FE43D4A51616FEF20018E931 /* app_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FE43D4A41616FEF20018E931 /* app_icon.png */; };
 		FE43D4A71616FEF60018E931 /* app_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FE43D4A61616FEF60018E931 /* app_icon@2x.png */; };
@@ -50,6 +51,7 @@
 		FE161CA71614FCFD00D9D440 /* SelectCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectCalendarViewController.m; path = "Select Calendar/SelectCalendarViewController.m"; sourceTree = "<group>"; };
 		FE21A2021615E5E30059E4AC /* SelectCalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectCalendarCell.h; path = "Select Calendar/SelectCalendarCell.h"; sourceTree = "<group>"; };
 		FE21A2031615E5E30059E4AC /* SelectCalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectCalendarCell.m; path = "Select Calendar/SelectCalendarCell.m"; sourceTree = "<group>"; };
+		FE28FE2F16AE87C100E0CF05 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		FE43D4601616EB830018E931 /* MainScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainScreenViewController.h; path = MainScreen/MainScreenViewController.h; sourceTree = "<group>"; };
 		FE43D4611616EB830018E931 /* MainScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainScreenViewController.m; path = MainScreen/MainScreenViewController.m; sourceTree = "<group>"; };
 		FE43D4A41616FEF20018E931 /* app_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = app_icon.png; path = ../app_icon.png; sourceTree = "<group>"; };
@@ -131,6 +133,15 @@
 			name = SelectCalendar;
 			sourceTree = "<group>";
 		};
+		FE28FE3116AE985900E0CF05 /* Main Screen View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FE43D4601616EB830018E931 /* MainScreenViewController.h */,
+				FE43D4611616EB830018E931 /* MainScreenViewController.m */,
+			);
+			name = "Main Screen View Controller";
+			sourceTree = "<group>";
+		};
 		FEA1D4E81610576000B80721 = {
 			isa = PBXGroup;
 			children = (
@@ -171,11 +182,10 @@
 				FEA1D5061610576000B80721 /* AppDelegate.h */,
 				FEA1D5071610576000B80721 /* AppDelegate.m */,
 				FEA1D50F1610576000B80721 /* iPhone.storyboard */,
-				FE43D4601616EB830018E931 /* MainScreenViewController.h */,
-				FE43D4611616EB830018E931 /* MainScreenViewController.m */,
 				FEA1D5121610576000B80721 /* iPad.storyboard */,
-				FE161CAA1614FE2A00D9D440 /* SelectCalendar */,
 				FE098FB7161442D100A98F7B /* Select Group */,
+				FE161CAA1614FE2A00D9D440 /* SelectCalendar */,
+				FE28FE3116AE985900E0CF05 /* Main Screen View Controller */,
 				FEA1D4FE1610576000B80721 /* Supporting Files */,
 			);
 			path = "BSUIR Schedule";
@@ -184,6 +194,7 @@
 		FEA1D4FE1610576000B80721 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FE28FE2F16AE87C100E0CF05 /* Default-568h@2x.png */,
 				FEA1D4FF1610576000B80721 /* BSUIR Schedule-Info.plist */,
 				FEA1D5001610576000B80721 /* InfoPlist.strings */,
 				FEA1D5031610576000B80721 /* main.m */,
@@ -274,6 +285,7 @@
 				FEA1D5141610576000B80721 /* iPad.storyboard in Resources */,
 				FE43D4A51616FEF20018E931 /* app_icon.png in Resources */,
 				FE43D4A71616FEF60018E931 /* app_icon@2x.png in Resources */,
+				FE28FE3016AE87C100E0CF05 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -31,13 +31,14 @@
     NSMutableDictionary* groups = [NSMutableDictionary dictionaryWithCapacity:calendars.count];
     
     for (EKCalendar* calendar in _store.calendars) {
-        if (calendar.type == EKCalendarTypeBirthday)
-            continue;
-        NSMutableArray* arr = groups[calendar.source.title];
-        if (!arr) {
-            groups[calendar.source.title] = [NSMutableArray new];
+        if (calendar.type != EKCalendarTypeBirthday){
+            NSMutableArray* arr = groups[calendar.source.title];
+
+            if (!arr) {
+                arr = groups[calendar.source.title] = [NSMutableArray new];
+            }
+            [arr addObject:calendar];
         }
-        [arr addObject:calendar];
     }
     
     return groups;
@@ -47,6 +48,8 @@
 {
     [super viewDidLoad];
     _store = [[EKEventStore alloc] init];
+    self.tableView.contentInset = UIEdgeInsetsMake(52, 0, 0, 0);
+    [BSModel sharedInstance].store = _store;
     _groupedCalendars = [self groupCalendars:self.store.calendars];
     
     // Uncomment the following line to preserve selection between presentations.
@@ -56,16 +59,21 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    int64_t delayInSeconds = 1.0;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){        
-        if (!_store.calendars.count) {
-            [self.presentingViewController dismissModalViewControllerAnimated:YES];
-            if (_cancelBlock) {
-                _cancelBlock();
+    if (    self.presentingViewController.modalTransitionStyle == UIModalTransitionStylePartialCurl) {
+        NSLog(@"Curl effect");
+    }
+    if ([_store respondsToSelector:@selector(requestAccessToEntityType:completion:)]) {
+        [_store requestAccessToEntityType:(EKEntityTypeEvent) completion:^(BOOL granted, NSError *error) {
+            if (granted == NO || 0 ==_store.calendars.count) {
+                [self.presentingViewController dismissModalViewControllerAnimated:YES];
+                if (_cancelBlock)
+                    _cancelBlock();
             }
-        }
-    });
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.tableView reloadData];
+            });
+        }];
+    }
 }
 
 -(EKCalendar*)calendarForIndexPath:(NSIndexPath*)indexPath
