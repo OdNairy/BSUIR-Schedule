@@ -49,10 +49,23 @@
     _store = [[EKEventStore alloc] init];
     _groupedCalendars = [self groupCalendars:self.store.calendars];
     
-    
     // Uncomment the following line to preserve selection between presentations.
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    int64_t delayInSeconds = 1.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){        
+        if (!_store.calendars.count) {
+            [self.presentingViewController dismissModalViewControllerAnimated:YES];
+            if (_cancelBlock) {
+                _cancelBlock();
+            }
+        }
+    });
 }
 
 -(EKCalendar*)calendarForIndexPath:(NSIndexPath*)indexPath

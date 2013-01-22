@@ -10,5 +10,6 @@
 
 @interface SelectCalendarViewController : UITableViewController
 @property (nonatomic, copy) dispatch_block_t finishBlock;
+@property (nonatomic, copy) dispatch_block_t cancelBlock;
 
 @end

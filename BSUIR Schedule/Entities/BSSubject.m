@@ -19,7 +19,6 @@
 }
 
 -(void)writeDB {
-    
     // Parse
     NSURL *parseUrl = [NSURL URLWithString:@"http://www.bsuir.by/psched/schedulegroup?group=972301" ];
     NSString* responceString = [NSString stringWithContentsOfURL:parseUrl encoding:NSUTF8StringEncoding error:nil];

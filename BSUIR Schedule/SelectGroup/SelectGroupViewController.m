@@ -53,7 +53,7 @@
 {
     [BSModel sharedInstance].groupNumber = self.groupTextField.text;
     [[BSModel sharedInstance] downloadAndParseScheduleWithFinishBlock:^(BSWeek *workWeek) {
-        NSLog(@"%@",[workWeek firstWeekEvents]);
+//        NSLog(@"%@",[workWeek firstWeekEvents]);
     }];
     
     SelectCalendarViewController* selectCalendar = [segue destinationViewController];
@@ -62,6 +62,12 @@
     selectCalendar.finishBlock = ^{
         UIViewController* contr = [[UIStoryboard storyboardWithName:@"iPhone" bundle:nil] instantiateViewControllerWithIdentifier:@"MainScreenViewController"];
         navigationController.viewControllers = @[contr];
+    };
+    selectCalendar.cancelBlock=^{
+        UIAlertView* view = [[UIAlertView alloc]initWithTitle:@"Error"
+                                                      message:@"No calendars were found." delegate:nil
+                                            cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [view show];
     };
 }
 

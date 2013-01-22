@@ -30,6 +30,7 @@
 {
     [super viewDidLoad];
     self.navigationItem.titleView = self.openCalendarWindowButton;
+
 	// Do any additional setup after loading the view.
 }
 
@@ -64,12 +65,13 @@
 #pragma mark - Actions
 
 - (IBAction)alarmTimeStepperChanged:(UIStepper*)sender {
-    NSUInteger stepperTime = (NSUInteger)sender;
+    NSUInteger stepperTime = (NSUInteger)sender.value;
     self.alarmTimeLabel.text = [NSString stringWithFormat:@"%u",stepperTime];
 }
 
 - (IBAction)alarmsOnChanged:(UISwitch*)sender {
-    
+    self.alarmTimeLabel.enabled = self.alarmTimeStepper.enabled = sender.on;
+
 }
 
 
